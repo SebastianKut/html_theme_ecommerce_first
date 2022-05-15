@@ -9,7 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="relative" x-data="{ openCartMenu: false, openMobileMenu:false }">
+    <div class="relative" x-data="{ openCartMenu: false, openMobileMenu:false, openSearchBar: false }">
 
         <header class="px-16 w-full mx-auto">
             <!-- TOOLBAR -->
@@ -43,7 +43,7 @@
                 <div class="h-10 leading-10">
                     <ul class="flex justify-end">
                         <li class="mx-4">
-                            <button>
+                            <button @click="openSearchBar = true">
                                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                 </svg>
@@ -64,14 +64,14 @@
                             </button>
                         </li>
                     </ul>
-                </div>
-                
+                </div>  
             </nav>
             <!-- END FULLSCREEN NAVIGATION -->
+
         </header>
 
         <!-- CART SIDE MENU -->
-        <div x-show="openCartMenu" class="absolute top-0 right-0 h-screen w-80 lg:w-2/6 bg-black">
+        <div x-show="openCartMenu" class="absolute top-0 right-0 h-screen w-80 lg:w-2/6 bg-black z-50">
             <div class="p-4 flex flex-col justify-between">
                 <div class="flex justify-between items-center border-b border-gray-700 pb-4 h-16">
                     <h1 class="text-white text-4xl uppercase">Cart</h1>
@@ -89,7 +89,7 @@
         <!-- END SIDE CART MENU -->
 
         <!-- MOBILE MENU -->
-         <div x-show="openMobileMenu" class="absolute top-0 right-0 h-screen w-80 lg:w-2/6 bg-black">
+         <div x-show="openMobileMenu" class="absolute top-0 right-0 h-screen w-80 lg:w-2/6 bg-black z-50">
              <div class="p-4 flex flex-col justify-between">
                 <div class="flex justify-end items-center border-b border-gray-700 pb-4 h-16">
                     <button @click="openMobileMenu = false">
@@ -104,6 +104,49 @@
             </div> 
         </div>
         <!-- END MOBILE MENU -->
+
+        <!-- OVERLAY -->
+        <div x-show="openMobileMenu || openCartMenu || openSearchBar" class="absolute inset-0 z-10 bg-gray-700/75 h-screen"></div>
+        <!-- END OVERLAY -->
+
+        <!-- SEARCH BOX -->
+        <!-- <div x-show="openSearchBar" class="absolute top-0 h-28 w-full bg-black flex justify-center items-center z-50">
+            <div class="flex justify-between items-center h-16 w-full px-16">
+                 <button class="mr-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button> 
+                <form action="#" class="h-full w-full">
+                    <input type="text" placeholder="Search our store" class="h-full w-full bg-black text-white outline-none">
+                </form>
+                <button @click="openSearchBar = false" class="ml-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div> -->
+
+
+        <div x-show="openSearchBar" class="absolute top-0 h-28 w-full bg-black flex justify-center items-center z-50">
+            <div class="flex justify-between items-center h-16 w-full px-16">
+                <form action="#" method="GET" class="h-full w-full flex justify-between">
+                    <button class="mr-4" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </button> 
+                    <input type="text" placeholder="Search our store" class="h-full w-full bg-black text-white outline-none">
+                </form>
+                <button @click="openSearchBar = false" class="ml-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- END SEARCH BOX -->
     </div>
 </body>
 </html>
