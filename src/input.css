@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* CUSTOM CSS CLASSES */
+
+.custom--submenu{
+    display: none;
+    top: 88px;
+    left: 0;
+    right: 0;
+}
+
+.custom--menu-item:hover .custom--submenu{
+    display: block;
+}
+
+/* END CUSTOM CSS CLASSES */
