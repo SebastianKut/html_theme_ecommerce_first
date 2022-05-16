@@ -13,7 +13,7 @@
 }
 
 .custom--menu-item:hover .custom--submenu{
-    display: block;
+    display: flex;
 }
 
 /* END CUSTOM CSS CLASSES */
