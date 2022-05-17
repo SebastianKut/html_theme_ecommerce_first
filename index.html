@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/assets/output.css" rel="stylesheet">
     <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
+    <script src="https://kit.fontawesome.com/d313d8ce9f.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
@@ -158,17 +159,17 @@
 
             <!-- FULL SCREEN NAVIGATION -->
             <nav class="flex justify-between items-center h-20">
-                <div class="h-10 leading-10 shrink-1 bg-black">
+                <div class="h-10 leading-10 shrink-1 flex-1 bg-black">
                     <img class="h-10" src="./media/logo.png" alt="logo-image">
                 </div>
-                <div class="hidden md:block h-10 leading-10 shrink-0">
+                <div class="hidden md:block h-10 leading-10 shrink-0 flex-1">
                     <ul class="flex justify-center">
                         <li class="mx-2 hover:bg-black hover:text-white px-1 custom--menu-item">
                             <a href="#" class="uppercase">Products</a>
                             <!-- FULLSCREEN SUBMENU -->
                             <div class="absolute bg-black h-auto z-50 custom--submenu px-1 py-10 xl:px-36 justify-center">
                                 <div class="flex justify-between items-start w-10/12">
-                                    <div class="flex flex-col mx-2">
+                                    <div class="flex flex-col mx-4">
                                         <img src="./media/img-submenu.webp" alt="" class="w-56 aspect-video mb-4">
                                         <h1 class="uppercase">Title 1</h1>
                                         <ul>
@@ -223,7 +224,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="h-10 leading-10">
+                <div class="h-10 leading-10 flex-1">
                     <ul class="flex justify-end">
                         <li class="mx-4">
                             <button @click="openSearchBar = true">
@@ -257,7 +258,8 @@
 
         <!-- CART SIDE MENU -->
         <div x-show="openCartMenu" class="absolute top-0 right-0 h-screen w-80 xl:w-1/4 bg-black z-50">
-            <div class="p-4 flex flex-col justify-between">
+            <div class="p-4 flex flex-col justify-between h-full">
+                <!-- Cart header -->
                 <div class="flex justify-between items-center border-b border-gray-700 pb-4 h-16">
                     <h1 class="text-white text-4xl uppercase">Cart</h1>
                     <button @click="openCartMenu = false">
@@ -266,9 +268,38 @@
                         </svg>
                     </button>
                 </div>
-               <div class="grow h-16 py-4">
-                   <h1 class="text-white">Your Cart is empty</h1>
-               </div>
+                <!-- End Cart Header -->
+                <form action="" class="grow flex flex-col justify-between">
+                    <!-- Cart Body -->
+                    <div class="py-4 grow"> 
+                    <!-- <h1 class="text-white">Your Cart is empty</h1> -->
+                        <div class="flex justify-between items-center w-full text-white">
+                            <div class="w-24">
+                                <img src="./media/product-thumbnail-cart.png" alt="" class="aspect-square h-full">
+                            </div>
+                            <div class="flex flex-col justify-between grow pl-3">
+                                <h2 class="uppercase text-sm pb-1">Premier elite build</h2>
+                                <p class="text-xs py-1"><strong>Color:</strong> Red</p>
+                                <div class="flex justify-start pt-1">
+                                    <div class="border border-gray-700">
+                                        <button class="w-6">-</button>
+                                        <input class="w-6 text-sm text-center bg-black" type="text" value="1" disabled>
+                                        <button class="w-6">+</button>
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="">
+                                <h2 class="text-sm">$4,352.00</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Cart Body -->
+                     <!-- Cart Footer -->
+                    <div class="h-16 py-4 border-t border-gray-700">
+                        <h1 class="text-white">Cart Footer</h1>
+                    </div>
+                    <!-- End Cart Footer -->
+                </form>
             </div> 
         </div>
         <!-- END SIDE CART MENU -->
@@ -288,9 +319,9 @@
                     <button @click="openSubmenu = ! openSubmenu" class="w-full">
                         <span class="flex justify-between items-center">
                             <span class="uppercase text-2xl">Products</span>
-                            <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                                    </svg>
+                            <span class="h-8 w-10 pl-4 flex justify-center items-center border-l border-gray-700">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                                </svg>
                             </span>
                             
                             </span>
@@ -300,7 +331,7 @@
                         <button @click="openSubmenuCategory1 = ! openSubmenuCategory1" class="w-full text-sm">
                             <span class="flex justify-between items-center">
                                 <span class="">Title 1</span>
-                                <span>
+                                <span class="h-6 w-6 flex justify-center items-center border rounded-full border-gray-700">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                                     </svg>
                                 </span>
@@ -319,7 +350,7 @@
                         <button @click="openSubmenuCategory2 = ! openSubmenuCategory2" class="w-full text-sm">
                             <span class="flex justify-between items-center">
                                 <span class="">Title 2</span>
-                                <span>
+                                <span class="h-6 w-6 flex justify-center items-center border rounded-full border-gray-700">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                                     </svg>
                                 </span>
@@ -337,7 +368,7 @@
                         <button @click="openSubmenuCategory3 = ! openSubmenuCategory3" class="w-full text-sm">
                             <span class="flex justify-between items-center">
                                 <span class="">Title 3</span>
-                                <span>
+                                <span class="h-6 w-6 flex justify-center items-center border rounded-full border-gray-700">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                                     </svg>
                                 </span>
@@ -354,7 +385,7 @@
                         <button @click="openSubmenuCategory4 = ! openSubmenuCategory4" class="w-full text-sm">
                             <span class="flex justify-between items-center">
                                 <span class="">Title 4</span>
-                                <span>
+                                <span class="h-6 w-6 flex justify-center items-center border rounded-full border-gray-700">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                                     </svg>
                                 </span>
@@ -381,6 +412,19 @@
                     <a href="#" class="uppercase text-2xl">Features</a>
                 </div>
                 <!-- End Regular Links -->
+                <!-- Social Icons Section -->
+                <div class="grow flex justify-between border border-gray-700 text-white mt-4">
+                    <div class="border-r border-gray-700 flex-1 text-center py-4">
+                        <i class="fa-brands fa-facebook text-2xl"></i>
+                    </div>
+                    <div class="flex-1 text-center py-4">
+                        <i class="fa-brands fa-youtube text-2xl"></i>
+                    </div>
+                    <div class="border-l border-gray-700 flex-1 text-center py-4">
+                        <i class="fa-brands fa-twitter text-2xl"></i>
+                    </div>
+                </div>
+                <!-- End Social Icons Section -->
             </div> 
         </div>
         <!-- END MOBILE MENU -->
